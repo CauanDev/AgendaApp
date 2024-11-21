@@ -18,6 +18,12 @@ class UserController extends Controller
         $this->mailController = $mailController;
     }
 
+    public function index($id)
+    {
+        $users = User::select('id', 'name', 'email')->where('id', '!=', $id)->get();
+        return response()->json($users, 200);
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\TarefasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,5 +35,8 @@ Route::group([
 });
 
 Route::post('/user',[UserController::class,'store']);
-route::post('/authenticated-user', [UserController::class, 'authenticated']);
+Route::post('/authenticated-user', [UserController::class, 'authenticated']);
 Route::post('/send-email', [MailController::class, 'index']);
+Route::get('/get-users/{id}', [UserController::class,'index']);
+Route::post('/create-atividade',[TarefasController::class, 'store']);
+Route::get('/atividades/{id}',[TarefasController::class, 'index']);

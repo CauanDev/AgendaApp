@@ -13,6 +13,10 @@ export default {
             type: [String, null],
             required: true
         },
+        required: {
+            type: Boolean,
+            default: false
+        },
         placeholder: {
             required: true,
             type: String

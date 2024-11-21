@@ -5,7 +5,7 @@ import RegisterView from '../views/RegisterView.vue'
 import TokenView from '../views/VerificationView.vue'
 import HomeView from '../views/HomeView.vue'
 import serviceRoutes from './serviceRouter'
-
+import TarefasView from '../views/TarefasView.vue'
 const routes = [
   {
     path: '/login/:toast?', name: 'login', component: LoginView,
@@ -29,6 +29,14 @@ const routes = [
     path: '/home',
     name: 'home',
     component: HomeView,
+    meta: {
+      auth: true
+    }
+  },
+  {
+    path: '/tarefas',
+    name:'tarefas',
+    component: TarefasView,
     meta: {
       auth: true
     }

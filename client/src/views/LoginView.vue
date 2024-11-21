@@ -13,9 +13,9 @@
 <script>
 import Button from 'primevue/button';
 import LoginForm from '../components/Forms/LoginForm.vue';
-import createAxiosInstance from "../services/http";
 import { inject } from 'vue';
 import { useAuth } from '../stores/auth';
+import createAxiosInstance from "../services/http";
 
 const http = createAxiosInstance();
 

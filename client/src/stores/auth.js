@@ -72,18 +72,20 @@ export const useAuth = defineStore('auth', () => {
     // Função para limpar os dados do usuário e token
     async function clear() {
         try {
-            await http.post('/auth/logout', { "token": token.value });
+            if (token.value) {
+                await http.post('/auth/logout', { token: token.value });
+            }
+        } catch (error) {
+            console.error('Erro ao fazer logout na API:', error);
+        } finally {
             localStorage.removeItem('token');
             localStorage.removeItem('user');
-            isAuth.value = false;
             token.value = null;
             user.value = null;
+            isAuth.value = false;
         }
-        catch (error) {
-            console.log(error)
-        }
-
     }
+    
 
     return {
         token,

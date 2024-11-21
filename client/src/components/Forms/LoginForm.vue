@@ -19,8 +19,8 @@ export default {
     components: { TextInput, PasswordInput },
     data() {
         return {
-            password: "kelvin10",
-            email: "kelvinromeiro10@gmail.com",
+            password: "",
+            email: "",
         }
     },
     methods: {
