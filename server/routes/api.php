@@ -40,3 +40,4 @@ Route::post('/send-email', [MailController::class, 'index']);
 Route::get('/get-users/{id}', [UserController::class,'index']);
 Route::post('/create-atividade',[TarefasController::class, 'store']);
 Route::get('/atividades/{id}',[TarefasController::class, 'index']);
+Route::get('/get-all-tarefas/{id}',[TarefasController::class,'allTarefas']);

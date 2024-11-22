@@ -27,15 +27,6 @@ export default {
         async submit() {
             this.loading = true
             const dados = this.$refs.form.getValues()
-            console.log(dados)
-            /*
-                       name: this.name,
-                priority: this.priority,
-                color: this.color,
-                participants: this.participants,
-                usuarioLogado: this.auth.getUser(),
-                data: this.date
-            */
             if (!dados.name || !dados.data) {
                 this.toast.showToast("Preencha Corretamente", 'error');
             }

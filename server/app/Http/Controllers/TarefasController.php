@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TarefaMembro;
 use App\Models\Tarefas;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TarefasController extends Controller
@@ -10,8 +12,30 @@ class TarefasController extends Controller
 
     public function index($id)
     {
-        $users = Tarefas::where('dono_da_atividade_id', $id)->get();
-        return response()->json($users, 200);
+        $tarefasDono = Tarefas::where('dono_da_atividade_id', $id);
+        $tarefasParticipante = Tarefas::join('tarefa_membros', 'tarefas.id', '=', 'tarefa_membros.tarefa_id')
+            ->where('tarefa_membros.pessoa_id', $id)
+            ->select('tarefas.*');
+
+        $tarefas = $tarefasDono->union($tarefasParticipante)->get();
+
+        return response()->json($tarefas, 200);
+    }
+
+    public function allTarefas($id)
+    {
+        $hoje = Carbon::today();
+        $tarefasCount = Tarefas::where('dono_da_atividade_id', $id)
+            ->whereDate('data', $hoje)
+            ->count();
+
+        $membrosCount = Tarefas::where('dono_da_atividade_id', $id)
+            ->whereDate('data', $hoje)
+            ->join('tarefa_membros', 'tarefas.id', '=', 'tarefa_membros.tarefa_id')
+            ->where('tarefa_membros.pessoa_id', $id)
+            ->count();
+
+        return response()->json($tarefasCount + $membrosCount, 200);
     }
 
     public function store(Request $request)

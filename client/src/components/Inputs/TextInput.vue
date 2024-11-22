@@ -18,7 +18,7 @@ export default {
             default: false
         },
         placeholder: {
-            required: true,
+            required: false,
             type: String
         }
     },
