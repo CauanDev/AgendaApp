@@ -35,12 +35,16 @@ const routes = [
   },
   {
     path: '/tarefas',
-    name:'tarefas',
+    name: 'tarefas',
     component: TarefasView,
     meta: {
       auth: true
     }
-  }
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/home',
+  },
 ]
 
 const router = createRouter({
