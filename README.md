@@ -30,24 +30,36 @@
   php artisan migrate
 ```
  !! Caso o erro " could not find driver (Connection: pgsql, SQL: select * from information_schema.tables where table_catalog = agenda and table_schema = public and table_name = migrations and table_type = 'BASE TABLE')" ocorra va para o arquivo php.ini(localizado onde esta instalado o PHP). No arquivo procure por ";extension=pdo_pgsql" remove os dois pontos(";") que antecede a linha. E execute o comando "php artisan migrate" novamente. 
- 
+
+ 5º - Para utilizar a funcionalidade de confirmação de e-mail, preencha as seguintes variáveis no arquivo .env:
+ ``` 
+# Exemplo de configuração:
+	MAIL_MAILER=smtp
+	MAIL_HOST=localhost
+	MAIL_PORT=587
+	MAIL_USERNAME="NOME_DO_USUÁRIO"
+	MAIL_PASSWORD="SENHA_DO_USUÁRIO"
+	MAIL_ENCRYPTION=tls
+	MAIL_FROM_ADDRESS="seuemail@exemplo.com"
+	MAIL_FROM_NAME="Nome do Remetente"
+ ```
   
  O programa foi construido como SGBD o postgres SQL, porém é possível utilizar outro banco de dados 
 ### configuração  lado do servidor
  1º - Abra a pasta "server"; 
  2º - abra o CMD na pasta server e execute o seguinte comando:
   ```
-	composer update
+composer update
    ```
  3º- Após a instalação de todos os componentes execute o seguinte comando:
   ```
-  php artisan serve
+php artisan serve
    ```
  
 ### Configurando lado do cliente
 Na pasta "client" abra o cmd, e pós isso execute o comando:
 ```
-	npm install
+npm install
  ```
 Feito todas as intalações execute o seguinte comando:
 ```
@@ -57,6 +69,12 @@ Após isso o sera aberto uma rota para ser utilizada no navegador, geralmente a 
 ```
 #abra essa rota no navegador para utilizar o programa
  http://localhost:5173/
+```
+Para acessar, utilize o acesso de administrador que foi criado no migrate:
+```
+email: master@example.com
+senha: master123
+
 ```
 Confira a rota que aparecerá após a execução do comando. 
 
