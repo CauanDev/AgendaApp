@@ -53,6 +53,10 @@ composer update
    ```
  3º- Após a instalação de todos os componentes execute o seguinte comando:
   ```
+php artisan jwt:secret
+   ```
+4º- Após a instalação de todos os componentes execute o seguinte comando:
+  ```
 php artisan serve
    ```
  
